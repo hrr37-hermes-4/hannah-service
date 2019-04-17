@@ -23,8 +23,7 @@
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node 6.13.0
-- etc
+- Node 7.6.0+ 
 
 ## Development
 Workflow and sprint management can be seen at: https://trello.com/b/sI4IwOWn/fec. 
