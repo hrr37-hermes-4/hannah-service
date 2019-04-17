@@ -1,27 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import $ from 'jquery';
-
-const Button = styled.button`
-align: center;
-background-color: #F4F1EA;
-border-radius: 3px;
-color: #333333;
-height: 25px;
-width: 48px;
-margin-bottom: 20px;
-border: 1px solid #D6D0C4;
-box-shadow: 0 0 10px #F4F1EA;
-cursor: pointer;
-&:focus {outline: none; box-shadow:0 0 10px #D6D0C4;}
-`;
-
-const Likes = styled.span`
-  color: #00635D;
-  cursor: pointer;
-  text-decoration: none;
-  &:hover {text-decoration: underline};
-`;
+import style from '../sample.less';
 
 class ReviewActivity extends React.Component {
   constructor(props) {
@@ -55,14 +34,16 @@ class ReviewActivity extends React.Component {
   render() {
     return (
       <div>
-        <Likes>{this.state.likes} likes</Likes>
+        <span className={style.likes}>{this.state.likes} likes</span>
         <span> · </span>
         <span>
-          <Button
+          <button
+            type="submit"
+            className={style.likeButton}
             onClick={this.likeHandler}
           >
           Like
-          </Button>
+          </button>
         </span>
       </div>
     );

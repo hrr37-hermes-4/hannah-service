@@ -1,11 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const path = require('path');
 const db = require('../db');
 
 const app = express();
 
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/books/:id', express.static(path.join(__dirname, '/../public')));
@@ -24,7 +25,7 @@ app.get('/books/:id/reviews', async (req, res) => {
 });
 
 // get reviews for specific book w/ specific rating
-app.get('/books/:id/reviews/:rating', async (req, res) => {
+app.get('/books/:id/reviews/rating/:rating', async (req, res) => {
   const { id, rating } = req.params;
   try {
     const ratedReviews = await db.getRatedReviews(id, rating);
@@ -35,7 +36,7 @@ app.get('/books/:id/reviews/:rating', async (req, res) => {
 });
 
 // get all users
-app.get('/books/:id/users', async (req, res) => {
+app.get('/books/:id/reviews/users', async (req, res) => {
   try {
     const users = await db.getAllUsers();
     res.json(users);
