@@ -12,12 +12,12 @@ const createFakeReview = () => ({
   book_id: faker.random.number({min:1, max:10000000}),
   date: `${faker.date.month()} ${faker.random.number({'min': 1, 'max': 30})}, ${(Math.floor(Math.random() * (2019-1996)) + 1996)}`,
   review: faker.lorem.paragraphs(),
-  rating: faker.random.numer({min:1, max:5})
+  rating: faker.random.number({min:1, max:5})
 });
 
 const generateManyUsers = () => {
   const users = [];
-  const desiredNumber = 10000000;
+  const desiredNumber = 10000;
   for (let i = 0; i < desiredNumber; i++) {
     users.push(createFakeUser());
   }
@@ -26,7 +26,7 @@ const generateManyUsers = () => {
 
 const generateManyReviews = () => {
   const reviews = [];
-  const desiredNumber = 10000000;
+  const desiredNumber = 100000000;
   for (let i = 0; i < desiredNumber; i++) {
     users.push(createFakeReview());
   }
