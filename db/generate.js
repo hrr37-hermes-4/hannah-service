@@ -12,7 +12,7 @@ const createFakeReview = () => ({
   book_id: faker.random.number({min:1, max:10000000}),
   date: `${faker.date.month()} ${faker.random.number({'min': 1, 'max': 30})}, ${(Math.floor(Math.random() * (2019-1996)) + 1996)}`,
   review: faker.lorem.paragraphs(),
-  rating: faker.random.numer({min:1, max:5})
+  rating: faker.random.number({min:1, max:5})
 });
 
 const generateManyUsers = () => {
