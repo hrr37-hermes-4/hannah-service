@@ -26,7 +26,7 @@ const generateManyUsers = () => {
 
 const generateManyReviews = () => {
   const reviews = [];
-  const desiredNumber = 100000000;
+  const desiredNumber = 25000000;
   for (let i = 0; i < desiredNumber; i++) {
     reviews.push(createFakeReview());
   }
