@@ -12,9 +12,9 @@
         "rating": 1,
         "likes": 0
     }
-] |
-| add new review for book  | POST | /books/:id/reviews | {...book_id: 3, review: '...'} | creates entry in database | {...'book_id': 3, 'review': '...'} |
-| increment likes for a review  | PUT | /books/:id/reviews | {...book_id: 3, likes: 0} | update column in database | {... 'book_id': 3, 'likes': 0} |
+]
+| add new review for book  | POST | /books/:id/reviews | {...book_id: 3, review: '...'} | creates entry in database | {...'book_id': 3, 'review': '...'}
+| increment likes for a review  | PUT | /books/:id/reviews | {...book_id: 3, likes: 0} | update column in database | {... 'book_id': 3, 'likes': 0} 
 | delete review  | DELETE | /books/:id/reviews | {...book_id: 3, review: '...'} | delete row in database table | {... 'book_id': 3, 'review': '...} |
 
 ## Related Projects
