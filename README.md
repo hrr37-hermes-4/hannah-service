@@ -2,6 +2,15 @@
 
 > Bookshelf is a clone of an item page from https://goodreads.com. It includes 4 modules: the main book information, extra details, author details, and the reviews.
 
+
+| intention     | request type  |  request url  | request body | side effect | response body |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+
+
+
 ## Related Projects
 
   - https://github.com/hrr37-hermes-4/repo
@@ -27,7 +36,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - etc
 
 ## Development
-Workflow and sprint management can be seen at: https://trello.com/b/sI4IwOWn/fec. 
+Workflow and sprint management can be seen at: https://trello.com/b/sI4IwOWn/fec.
 
 ### Installing Dependencies
 
@@ -38,9 +47,9 @@ npm install -g webpack
 npm install
 ```
 
-### To Run 
+### To Run
   - Run 'npm run start:dev' to start server. Nodemon should be installed on your machine.
-  - Run 'npm run build:dev' to build files with Webpack and create bundle.js. 
+  - Run 'npm run build:dev' to build files with Webpack and create bundle.js.
   - Run 'npm run seed-db' to seed the database.
-  - Run 'npm test" to run tests. 
+  - Run 'npm test" to run tests.
 
