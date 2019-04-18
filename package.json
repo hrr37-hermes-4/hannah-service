@@ -10,7 +10,7 @@
   "scripts": {
     "start:dev": "nodemon server/index.js -w db -w server",
     "build:dev": "webpack -d --watch",
-    "seed-db": "mysql -u root < schema.sql && node db/seed.js",
+    "seed": "mysql -u root < schema.sql && node db/seed.js",
     "lint": "eslint .",
     "test": "jest"
   },
@@ -23,10 +23,14 @@
     "babel-loader": "^8.0.5",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
+    "knex": "^0.16.5",
     "mysql": "^2.16.0",
+    "nodemon": "^1.18.11",
+    "pg": "^7.10.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
@@ -35,6 +39,7 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
+    "css-loader": "^2.1.1",
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
@@ -42,6 +47,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "jest": "^24.6.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "style-loader": "^0.23.1",
     "superagent": "^5.0.2",
     "supertest": "^4.0.2",
     "webpack": "^4.29.6",

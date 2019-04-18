@@ -1,51 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
 import $ from 'jquery';
 import AppRouter from './router.jsx';
 import Reviews from './components/Reviews.jsx';
 import RatingDetails from './components/RatingDetails.jsx';
 import Filter from './components/Filter.jsx'
 import AddReview from './components/AddReview.jsx'
-
-const Container = styled.div`
-  float: left;
-  width: 625px;
-  padding-right: 10px;
-  padding-left: 8px;
-`;
-
-const StyledLink = styled.a`
-  color: #00635d;
-  textDecoration: none;
-  font-family: Lato, Helvetica Neue, Helvetica, sans-serif;
-  cursor: pointer;
-  &:hover {text-decoration: underline};
-  display: inline-block;
-  position: relative;
-  flex-basis: 400px;
-`;
-
-const Search = styled.span`
-  float: right;
-  color: #333333;
-  background: #FFFFFF;
-`;
-
-const SearchInput = styled.input`
-  width: 130px;
-  border: #DCD6CC 1px solid;
-  border-radius: 3px;
-  padding: 5px
-`;
-
-const Align = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 0;
-  margin: 10px;
-`;
-
+import style from './sample.less';
 
 class App extends React.Component {
   constructor(props) {
@@ -70,16 +31,6 @@ class App extends React.Component {
     this.sortByRating = this.sortByRating.bind(this);
   }
 
-  // componentDidMount() {
-  //   fetch(this.getAllReviews())
-  //     .then(() => {
-  //       this.sortByRating();
-  //     })
-  //     .then(() => {
-  //       this.getAllUsers();
-  //     });
-  // }
-
   async componentDidMount() {
     await this.getAllReviews();
     await this.getAllUsers();
@@ -99,7 +50,7 @@ class App extends React.Component {
   }
 
   getAllUsers() {
-    $.get(`/books/${this.state.id}/users`, (data) => {
+    $.get(`/books/${this.state.id}/reviews/users`, (data) => {
       this.setState({
         users: data
       });
@@ -107,7 +58,7 @@ class App extends React.Component {
   }
 
   getRatedReviews(rating) {
-    $.get(`/books/${this.state.id}/reviews/${this.state.rating}`, (data) => {
+    $.get(`/books/${this.state.id}/reviews/rating/${this.state.rating}`, (data) => {
       this.setState({
         ratedReviews: data
       });
@@ -165,16 +116,16 @@ class App extends React.Component {
   }
 
   render() {
-    const { reviews, ratings, ratedReviews, users, rating, averageRating } = this.state;
+    const { reviews, ratings, ratedReviews, users, rating, averageRating, id } = this.state;
     return (
-      <Container className="app">
+      <div className={style.container}>
         <RatingDetails
           reviews={reviews}
           ratings={ratings}
           average={averageRating}
         />
         <br />
-        <Align>
+        <div className={style.align}>
           <Filter
             reviews={reviews}
             ratings={ratings}
@@ -187,11 +138,11 @@ class App extends React.Component {
             all={this.state.all}
           />
           <span>|</span>
-          <StyledLink>Sort order</StyledLink>
-          <Search>
-            <SearchInput placeholder="Search review text" />
-          </Search>
-        </Align>
+          <a href='#' className={style.styledLink}>Sort order</a>
+          <span className={style.search}>
+            <input className={style.searchInput} placeholder="Search review text" />
+          </span>
+        </div>
         <hr />
         <br />
         <div>
@@ -200,19 +151,19 @@ class App extends React.Component {
             ratedReviews={ratedReviews}
             reviews={reviews}
             users={users}
-            id={this.state.id}
+            id={id}
             getAllReviews={this.getAllReviews}
           />
         </div>
         <AddReview
-          id={this.state.id}
+          id={id}
           onUpdate={this.updateReviews}
         />
-      </Container>
+      </div>
     );
   }
 }
 
 export default App;
 
-ReactDOM.render(<AppRouter />, document.getElementById('app'));
+ReactDOM.render(<AppRouter />, document.getElementById('reviews'));
