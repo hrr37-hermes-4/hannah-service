@@ -1,5 +1,5 @@
 
-exports.up = async (knex, Promise) => {
+exports.up = async (knex) => {
   await knex.schema.createTable('reviews', (table) => {
     table
       .increments('id')
@@ -10,9 +10,9 @@ exports.up = async (knex, Promise) => {
     table
       .integer('book_id').notNullable();
     table
-      .string('date').notNullable();
+      .string('date', 10000).notNullable();
     table
-      .string('review').notNullable();
+      .string('review', 10000).notNullable();
     table
       .integer('rating').notNullable();
     table
@@ -21,5 +21,5 @@ exports.up = async (knex, Promise) => {
 };
 
 exports.down = async (knex, Promise) => {
-  await knex.schema.dropTable('users');
+  await knex.schema.dropTable('reviews');
 };
