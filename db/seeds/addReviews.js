@@ -14,7 +14,7 @@ exports.seed = async (knex) => {
   // generate reviews one at a time instead of bulk generation
   while (count <= 2000) {
     const fakeReviews = [];
-    const desiredAmount = 5000;
+    const desiredAmount = 10000;
     // iterate up to desiredAmount each time
     for (let i = 0; i < desiredAmount; i++) {
       fakeReviews.push(generate.createFakeReview());
