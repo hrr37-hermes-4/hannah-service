@@ -12,7 +12,9 @@
     "build:dev": "webpack -d --watch",
     "seed": "mysql -u root < schema.sql && node db/seed.js",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "csv": "node db/generate.js",
+    "memory": "node --max-old-space-size=8192 db/generate.js"
   },
   "dependencies": {
     "@babel/cli": "^7.2.3",
@@ -24,10 +26,13 @@
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
+    "csv-write-stream": "^2.0.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
+    "fast-csv": "^2.4.1",
     "jquery": "^3.3.1",
     "knex": "^0.16.5",
+    "knex-csv-transformer": "^1.0.4",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.11",
     "pg": "^7.10.0",

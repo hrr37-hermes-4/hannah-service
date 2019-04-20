@@ -1,7 +1,19 @@
-const generate = require('../generate.js');
 
 exports.seed = async (knex) => {
-  console.time('timing reviews seeding');
+  console.log('Beginning seed');
+  console.time('seed review time');
+  const query = `COPY reviews(user_id, book_id, date, review, rating) FROM '/Users/briankwon/Desktop/hr-immersive/SDC/sdc-brian/data.csv' DELIMITER ',' CSV HEADER`;
+  
+  knex.truncate('reviews');
+  await knex.raw(query);
+  await console.timeEnd('seed review time');
+};
+
+
+
+/* seed without csv
+
+console.time('timing reviews seeding');
   // declare count
   let count = 0;
   const incrementCount = () => { count += 1; };
@@ -20,7 +32,15 @@ exports.seed = async (knex) => {
         await incrementCount();
         await knex('reviews').insert(fakeReviews);
       }
+
       console.timeEnd('timing reviews seeding');
     });
 
-};
+
+
+
+*/
+
+
+
+
