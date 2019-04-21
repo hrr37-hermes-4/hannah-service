@@ -35,6 +35,7 @@
     "knex-csv-transformer": "^1.0.4",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.11",
+    "objects-to-csv": "^1.2.1",
     "pg": "^7.10.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

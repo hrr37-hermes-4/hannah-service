@@ -1,10 +1,11 @@
 const generate = require('../generate.js');
 
+
 exports.seed = async (knex) => {
-  console.time('timing users seeding');
-  const userData = generate.generateManyUsers();
-  console.log('users generated', userData.length);
-  await knex('users').truncate();
-  await knex.batchInsert('users', userData);
-  console.timeEnd('timing users seeding');
+  console.log('Beginning users data seed...');
+  console.time('seed users time');
+  const data = generate.generateManyUsers();
+  knex.truncate('users');
+  await knex.batchInsert('users', data);
+  await console.timeEnd('seed users time');
 };
