@@ -1,4 +1,4 @@
-const generate = require('../generate.js');
+const generate = require('../../generate.js');
 const fs = require('fs');
 const ObjectsToCsv = require('objects-to-csv');
 
@@ -27,14 +27,12 @@ exports.seed = async (knex) => {
       for (let i = 0; i < 1000000; i++) {
         fakeReviews.push(generate.createFakeReview());
       }
-
       await new ObjectsToCsv(fakeReviews).toDisk('/Users/briankwon/Desktop/hr-immersive/SDC/sdc-brian/reviews.csv');
       await knex.raw(query);
       await deleteCSV();
       await inc();
     }
   }
-
   await seedDB();
   await console.timeEnd('seed review time');
 
