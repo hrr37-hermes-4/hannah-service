@@ -1,8 +1,5 @@
 // DATA GENERATOR FILE
 const faker = require('faker');
-const fs = require('fs');
-const csvWriter = require('csv-write-stream');
-var writer = csvWriter();
 
 // create a fake user
 const createFakeUser = () => ({
@@ -26,8 +23,6 @@ const generateManyUsers = () => {
   }
   return users;
 };
-
-
 
 module.exports = {
   createFakeUser: createFakeUser,

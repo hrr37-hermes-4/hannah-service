@@ -1,4 +1,3 @@
-
 exports.up = async (knex, Promise) => {
   await knex.schema.createTable('users', (table) => {
     table
