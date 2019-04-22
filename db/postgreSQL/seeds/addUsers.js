@@ -9,4 +9,3 @@ exports.seed = async (knex) => {
   await knex.batchInsert('users', data);
   await console.timeEnd('seed users time');
 };
-a
