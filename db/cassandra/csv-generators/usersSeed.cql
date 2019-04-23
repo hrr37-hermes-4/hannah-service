@@ -1,1 +1,0 @@
-COPY sdc.users (id, username, avatar) FROM '/Users/briankwon/Desktop/hr-immersive/SDC/sdc-brian/db/cassandra/csv-generators/users.csv' WITH header=true AND delimiter=',';

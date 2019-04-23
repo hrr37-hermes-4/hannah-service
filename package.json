@@ -13,7 +13,8 @@
     "seed": "mysql -u root < schema.sql && node db/seed.js",
     "lint": "eslint .",
     "test": "jest",
-    "seed-cassandra": "cqlsh < db/cassandra/csv-generators/usersSeed.cql",
+    "seed-cassandra-users": "cqlsh < db/cassandra/csv-generators/usersSeed.cql",
+    "seed-cassandra-reviews": "node db/cassandra/csv-generators/reviews.js && cqlsh < db/cassandra/csv-generators/reviewsSeed.cql && node db/cassandra/csv-generators/reviews.js && cqlsh < db/cassandra/csv-generators/reviewsSeed.cql && node db/cassandra/csv-generators/reviews.js && cqlsh < db/cassandra/csv-generators/reviewsSeed.cql && node db/cassandra/csv-generators/reviews.js && cqlsh < db/cassandra/csv-generators/reviewsSeed.cql && node db/cassandra/csv-generators/reviews.js && cqlsh < db/cassandra/csv-generators/reviewsSeed.cql",
     "csv-generation": "node db/cassandra/csv-generators/users.js && node db/cassandra/csv-generators/reviews.js"
   },
   "dependencies": {
