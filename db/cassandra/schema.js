@@ -11,7 +11,7 @@ const initSchema = () => {
 
   client.execute('CREATE TABLE IF NOT EXISTS reviews ( \
     id int PRIMARY KEY, \
-    book_id int, \
+    book_id int PRIMARY KEY, \
     user_id int, \
     date varchar, \
     review varchar, \
