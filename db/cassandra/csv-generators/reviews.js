@@ -2,6 +2,7 @@ const generator = require('../../generate.js');
 const csvWriter = require('csv-write-stream');
 const writer = csvWriter();
 const fs = require('fs');
+const incrementCallCount = require('./callCount.js');
 
 const deleteCSV = () => {
   fs.unlink(__dirname + '/csv/reviews.csv', err => {
@@ -13,7 +14,7 @@ const generateReviewsCSV = async() => {
   console.log('Starting review csv generation');
   console.time('timing');
   let count = 0;
-  callCount !== 0 ? deleteCSV() : null;
+  incrementCallCount() > 1 ? deleteCSV() : null;
 
   await writer.pipe(fs.createWriteStream(__dirname + `/csv/reviews.csv`));
   for (let i = startValue; i < startValue + 10000000; i++) {
@@ -28,7 +29,6 @@ const generateReviewsCSV = async() => {
     })
   }
 
-  callCount++;
   writer.end();
   console.timeEnd('timing');
 }
