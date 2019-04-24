@@ -97,3 +97,12 @@ const addLike = async(reviewId) => {
 // getAllUsers();
 // postReview('Hello this is my review of this awesome book', 3, 2, 33);
 // addLike(5);
+
+module.exports = {
+  getReviews,
+  getRatedReviews,
+  getUser,
+  getAllUsers,
+  postReview,
+  addLike
+};
