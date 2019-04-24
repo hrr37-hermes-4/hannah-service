@@ -14,8 +14,9 @@
     "lint": "eslint .",
     "test": "jest",
     "seed-cassandra-users": "cqlsh < db/cassandra/cql/usersSeed.cql",
-    "seed-cassandra-reviews": "node db/cassandra/csv-generators/reviews.js && cqlsh < db/cassandra/cql/reviewsSeed.cql && node db/cassandra/csv-generators/reviews.js && cqlsh < db/cassandra/cql/reviewsSeed.cql && node db/cassandra/csv-generators/reviews.js && cqlsh < db/cassandra/cql/reviewsSeed.cql && node db/cassandra/csv-generators/reviews.js && cqlsh < db/cassandra/cql/reviewsSeed.cql && node db/cassandra/csv-generators/reviews.js && cqlsh < db/cassandra/cql/reviewsSeed.cql",
-    "csv-generation": "node db/cassandra/csv-generators/users.js && node db/cassandra/csv-generators/reviews.js"
+    "seed-cassandra-reviews": "cqlsh < db/cassandra/cql/reviewsSeed.cql",
+    "csv-generation-users": "node db/cassandra/csv-generators/users.js",
+    "csv-generation-reviews": "node db/cassandra/csv-generators/reviews.js"
   },
   "dependencies": {
     "@babel/cli": "^7.2.3",
