@@ -3,9 +3,6 @@ const csvWriter = require('csv-write-stream');
 const writer = csvWriter();
 const fs = require('fs');
 
-/* ***** HELPER METHODS ***** */
-
-
 /***** CSV GENERATOR *****/
 const generateReviewsCSV = () => {
   console.time('timing');
@@ -26,7 +23,5 @@ const generateReviewsCSV = () => {
   writer.end();
   console.timeEnd('timing');
 }
-
-
 
 generateReviewsCSV();
