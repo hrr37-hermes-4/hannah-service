@@ -6,8 +6,9 @@ const fs = require('fs');
 /***** CSV GENERATOR *****/
 const generateReviewsCSV = () => {
   console.time('timing');
-  let count = 0;
   console.log('Starting review csv generation');
+  let count = 0;
+
   writer.pipe(fs.createWriteStream(__dirname + `/csv/reviews.csv`));
   for (let i = 0; i < 12000000; i++) {
     let review = generator.createFakeReview();

@@ -15,8 +15,7 @@ exports.seed = async (knex) => {
       if (err) {console.log(err)};
     })
   };
-  // count increment function
-  const inc = () => { count++; };
+
   fs.createWriteStream('/Users/briankwon/Desktop/hr-immersive/SDC/sdc-brian/reviews.csv');
   // truncate will empty the table if filled
   knex.truncate('reviews');
@@ -30,7 +29,7 @@ exports.seed = async (knex) => {
       await new ObjectsToCsv(fakeReviews).toDisk('/Users/briankwon/Desktop/hr-immersive/SDC/sdc-brian/reviews.csv');
       await knex.raw(query);
       await deleteCSV();
-      await inc();
+      count++;
     }
   }
   await seedDB();
