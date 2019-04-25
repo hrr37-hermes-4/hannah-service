@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const db = require('../db');
+// const db = require('../db');
+const pg = require('../db/postgreSQL/index.js');
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.use('/books/:id', express.static(path.join(__dirname, '/../public')));
 app.get('/books/:id/reviews', async (req, res) => {
   const { id } = req.params;
   try {
-    const reviews = await db.getReviews(id);
+    const reviews = await pg.getReviews(id);
     res.json(reviews);
   } catch (err) {
     res.json(err);
@@ -28,7 +29,7 @@ app.get('/books/:id/reviews', async (req, res) => {
 app.get('/books/:id/reviews/rating/:rating', async (req, res) => {
   const { id, rating } = req.params;
   try {
-    const ratedReviews = await db.getRatedReviews(id, rating);
+    const ratedReviews = await pg.getRatedReviews(id, rating);
     res.json(ratedReviews);
   } catch (err) {
     res.json(err);
@@ -37,8 +38,9 @@ app.get('/books/:id/reviews/rating/:rating', async (req, res) => {
 
 // get all users
 app.get('/books/:id/reviews/users', async (req, res) => {
+  const { id } = req.params;
   try {
-    const users = await db.getAllUsers();
+    const users = await pg.getAllUsers(id);
     res.json(users);
   } catch (err) {
     res.json(err);
@@ -50,7 +52,7 @@ app.post('/books/:id/reviews', async (req, res) => {
   const { id } = req.params;
   const { rating, review, user_id } = req.body;
   try {
-    const posted = await db.postReview(review, rating, id, user_id);
+    const posted = await pg.postReview(review, rating, id, user_id);
     res.json(posted);
   } catch (err) {
     console.log(err);
@@ -61,11 +63,22 @@ app.post('/books/:id/reviews', async (req, res) => {
 app.put('/books/:id/reviews', async (req, res) => {
   const { reviewId } = req.body;
   try {
-    await db.addLike(reviewId);
+    await pg.addLike(reviewId);
     res.json();
   } catch (err) {
     console.log(err);
   }
 });
+
+app.delete('/books/:id/reviews', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const del = await pg.deleteReviews(id);
+    res.json(del);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 
 module.exports = app;
