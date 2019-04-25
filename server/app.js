@@ -38,8 +38,9 @@ app.get('/books/:id/reviews/rating/:rating', async (req, res) => {
 
 // get all users
 app.get('/books/:id/reviews/users', async (req, res) => {
+  const { id } = req.params;
   try {
-    const users = await pg.getAllUsers();
+    const users = await pg.getAllUsers(id);
     res.json(users);
   } catch (err) {
     res.json(err);
@@ -68,5 +69,16 @@ app.put('/books/:id/reviews', async (req, res) => {
     console.log(err);
   }
 });
+
+app.delete('/books/:id/reviews', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const del = await pg.deleteReviews(id);
+    res.json(del);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
 
 module.exports = app;

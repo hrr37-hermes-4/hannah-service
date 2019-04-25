@@ -32,6 +32,7 @@ const getRatedReviews = async(id, rating) => {
   }
 };
 
+
 const getUser = async(userId) => {
   try {
     let user = await knex.select('username')
@@ -45,13 +46,16 @@ const getUser = async(userId) => {
   }
 };
 
-const getAllUsers = async() => {
+// maybe refactor so that after reviews loaded, get users by that id
+const getAllUsers = async(id) => {
   try {
     console.time('get all users time');
-    let users = await knex.select().from('users');
+    let users = await knex.select()
+      .from('users')
+      .where({ user_id: id });
     await console.timeEnd('get all users time');
-    // await console.log(users);
-    return users;
+    await console.log(users[0]);
+    return users[0];
   }
   catch(err) {
     throw err;
@@ -90,6 +94,17 @@ const addLike = async(reviewId) => {
   }
 };
 
+const deleteReviews = async(bookId) => {
+  try {
+    await knex('reviews')
+      .where({ book_id: bookId })
+      .del();
+  }
+  catch(err) {
+    throw err;
+  }
+};
+
 /* TESTING RESULTS IN CONSOLE */
 // getReviews(439);
 // getRatedReviews(94, 3);
@@ -104,5 +119,6 @@ module.exports = {
   getUser,
   getAllUsers,
   postReview,
-  addLike
+  addLike,
+  deleteReviews
 };
