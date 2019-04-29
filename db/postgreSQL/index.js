@@ -1,4 +1,5 @@
 const config = require('../../knexfile.js');
+// change to production when ready to deploy
 const env = process.env.NODE_ENV || 'development';
 // CONNECT TO POSTGRESQL DB
 const knex = require('knex')(config[env]);

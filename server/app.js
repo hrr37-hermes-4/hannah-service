@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -19,6 +20,7 @@ app.get('/books/:id/reviews', async (req, res) => {
   const { id } = req.params;
   try {
     const reviews = await pg.getReviews(id);
+    console.log(reviews);
     res.json(reviews);
   } catch (err) {
     res.json(err);
